@@ -35,3 +35,15 @@ yolo train model="/path/to/M0/best.pt" data=data_weighted.yaml epochs=30 imgsz=6
 Evaluate M1/M2:
 yolo val model="runs/detect/ft_unweighted_uniform/weights/best.pt" data=data_base.yaml imgsz=640 conf=0.25 iou=0.5
 yolo val model="runs/detect/ft_weighted/weights/best.pt" data=data_base.yaml imgsz=640 conf=0.25 iou=0.5
+
+## How to reproduce Table 2 (minimal)
+1) Place your dataset locally (images/labels split into train/val) and edit the yaml `path` accordingly.
+2) Evaluate baseline M0:
+yolo val model="/path/to/M0/best.pt" data=data_base.yaml imgsz=640 conf=0.25 iou=0.5
+
+3) Run controlled fine-tuning and evaluation:
+yolo train model="/path/to/M0/best.pt" data=data_uniform.yaml epochs=30 imgsz=640 batch=16 seed=0 patience=0 device=0 amp=False project=runs/detect name=ft_unweighted_uniform
+yolo val model="runs/detect/ft_unweighted_uniform/weights/best.pt" data=data_base.yaml imgsz=640 conf=0.25 iou=0.5
+
+yolo train model="/path/to/M0/best.pt" data=data_weighted.yaml epochs=30 imgsz=640 batch=16 seed=0 patience=0 device=0 amp=False project=runs/detect name=ft_weighted
+yolo val model="runs/detect/ft_weighted/weights/best.pt" data=data_base.yaml imgsz=640 conf=0.25 iou=0.5
