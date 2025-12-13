@@ -1,0 +1,5 @@
+path: "/home/zayy/screw3.0-Member A"
+train: dataset_uniform/images/train
+val: dataset/images/val
+nc: 1
+names: ["screw"]

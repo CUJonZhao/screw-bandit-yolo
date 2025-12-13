@@ -1,0 +1,6 @@
+path: C:\Users\PC\Desktop\screw3.0\feedback
+train: images/train
+val: images/train
+
+names:
+  - screw

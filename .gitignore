@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+dataset/
+dataset_weighted/
+dataset_uniform/
+runs/
+weights/*.pt
+*.pt

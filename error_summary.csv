@@ -1,0 +1,2 @@
+total_images,total_gt,total_pred,total_TP,total_FP,total_FN,avg_conf,FN_per_image,FP_per_image,FN_rate_over_GT,FP_rate_over_pred
+1252,20247,22735,20195,2540,52,0.8480366114981575,0.04153354632587859,2.0287539936102235,0.0025682817207487527,0.11172201451506487
