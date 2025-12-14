@@ -40,7 +40,7 @@ def get_weight_strategy(difficulty_score):
     return 1.0 
 
 def main():
-    print(f"current category: {os.getcwd()}")
+    print(f"current working category: {os.getcwd()}")
     
     if not os.path.exists(INPUT_FILE):
         return
@@ -66,19 +66,6 @@ def main():
     total_imgs = len(df)
     hard_samples = df[df['weight'] > 1.0]
     high_weight_ratio = len(hard_samples) / total_imgs if total_imgs > 0 else 0
-
-    print("\n Policy Distribution Analysis:")
-    print(f"  - Total number of images: {total_imgs}")
-    print(f"  - Number of weighted hard samples (w > 1): {len(hard_samples)}")
-    print(f"  - Ratio of hard samples: {high_weight_ratio:.2%}")
-    print(f"  - Average difficulty score: {df['difficulty'].mean():.4f}")
-    
-    if high_weight_ratio > 0.4:
-        print("Too many samples are up-weighted (>40%)")
-    elif high_weight_ratio < 0.05:
-        print("Too few samples are up-weighted (<5%)")
-    else:
-        print("The up-weighted ratio is reasonable (5%–40%）")
 
 
     output_cols = ['filename', 'weight']
