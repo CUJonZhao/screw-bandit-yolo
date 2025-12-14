@@ -43,8 +43,6 @@ def main():
     print(f"current category: {os.getcwd()}")
     
     if not os.path.exists(INPUT_FILE):
-        print(f"Can not find {INPUT_FILE}")
-        print("   terminal should be run under screw3.0-Member A")
         return
 
     try:
@@ -58,7 +56,6 @@ def main():
     required_cols = ['FP', 'FN', 'avg_conf']
     for col in required_cols:
         if col not in df.columns:
-            print(f"warning, check format of state.csv")
             return
 
     df['difficulty'] = df.apply(calculate_difficulty, axis=1)
@@ -86,13 +83,11 @@ def main():
 
     output_cols = ['filename', 'weight']
     if 'filename' not in df.columns:
-        print("Column 'filename' not found in the input CSV")
         output_df = df
     else:
         output_df = df[output_cols]
         
     output_df.to_csv(OUTPUT_FILE, index=False)
-    print(f"\nWeights file saved to:{OUTPUT_FILE}")
    
 
 if __name__ == "__main__":
